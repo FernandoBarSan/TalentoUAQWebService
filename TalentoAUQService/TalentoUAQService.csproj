@@ -193,12 +193,17 @@
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfertasController.cs" />
+    <Compile Include="Controllers\tblcategoriasController.cs" />
+    <Compile Include="Controllers\tblestadosController.cs" />
+    <Compile Include="Controllers\tblmunicipiosController.cs" />
+    <Compile Include="Controllers\tblsubcategoriasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EstadosRepository.cs" />
     <Compile Include="Models\OfertasRepository.cs" />
+    <Compile Include="Models\TalentoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>TalentoUAQServiceData.tt</DependentUpon>
