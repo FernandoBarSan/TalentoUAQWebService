@@ -28,7 +28,7 @@ namespace TalentoUAQWebService.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, subcategoria);
             return response;
         }
-
+         
         // POST: api/tblestados
         public void Post([FromBody]string value)
         {
