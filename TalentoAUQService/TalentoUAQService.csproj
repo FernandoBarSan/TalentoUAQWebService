@@ -191,10 +191,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
+    <Compile Include="Models\favoritosClass.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfertasController.cs" />
     <Compile Include="Controllers\tblcategoriasController.cs" />
     <Compile Include="Controllers\tblestadosController.cs" />
+    <Compile Include="Controllers\tblfavoritosController.cs" />
     <Compile Include="Controllers\tblmunicipiosController.cs" />
     <Compile Include="Controllers\tblsubcategoriasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

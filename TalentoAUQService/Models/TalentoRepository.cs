@@ -11,8 +11,8 @@ namespace TalentoAUQService.Models
         public static List<tblcategoria> GetCategorias()
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
-
             var query = from tblcategoria in dataContext.tblcategorias
+                        where tblcategoria.activo=="S"
                         select tblcategoria;
             return query.ToList();
         }
@@ -21,7 +21,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblcategorias in dataContext.tblcategorias
-                        where tblcategorias.cveCategoria == cveCategoria
+                        where tblcategorias.cveCategoria == cveCategoria && tblcategorias.activo=="S"
                         select tblcategorias;
             return query.SingleOrDefault();
         }
@@ -30,6 +30,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblsubcategorias in dataContext.tblsubcategorias
+                        where tblsubcategorias.activo=="S"
                         select tblsubcategorias;
             return query.ToList();
         }
@@ -38,7 +39,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblsubcategorias in dataContext.tblsubcategorias
-                        where tblsubcategorias.cveSubcategoria == cveSubcategoria
+                        where tblsubcategorias.cveSubcategoria == cveSubcategoria && tblsubcategorias.activo=="S"
                         select tblsubcategorias;
             return query.SingleOrDefault();
         }
@@ -47,7 +48,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblsubcategorias in dataContext.tblsubcategorias
-                        where tblsubcategorias.cveCategoria == cveCategoria
+                        where tblsubcategorias.cveCategoria == cveCategoria && tblsubcategorias.activo=="S"
                         select tblsubcategorias;
             return query.ToList();
         }
@@ -56,6 +57,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblestados in dataContext.tblestados
+                        where tblestados.activo=="S"
                         select tblestados;
             return query.ToList();
         }
@@ -64,7 +66,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblestados in dataContext.tblestados
-                        where tblestados.cveEstado == cveEstado
+                        where tblestados.cveEstado == cveEstado && tblestados.activo=="S"
                         select tblestados;
             return query.ToList();
         }
@@ -73,6 +75,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblestados in dataContext.tblestados
+                        where tblestados.activo=="S"
                         select tblestados;
             return query.ToList();
         }
@@ -81,7 +84,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblmunicipios in dataContext.tblmunicipios
-                        where tblmunicipios.cveMunicipio == cveMunicipio
+                        where tblmunicipios.cveMunicipio == cveMunicipio && tblmunicipios.activo =="S"
                         select tblmunicipios;
             return query.ToList();
         }
@@ -90,8 +93,9 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblmunicipios in dataContext.tblmunicipios
-                        where tblmunicipios.cveEstado == cveEstado
+                        where tblmunicipios.cveEstado == cveEstado && tblmunicipios.activo=="S"
                         select tblmunicipios;
+            query.Where(a => a.activo == "S");
             return query.ToList();
         }
 
@@ -99,6 +103,7 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblempresas in dataContext.tblempresas
+                        where tblempresas.activo == "S"
                         select tblempresas;
             return query.ToList();
         }
@@ -107,27 +112,54 @@ namespace TalentoAUQService.Models
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             var query = from tblempresas in dataContext.tblempresas
-                        where tblempresas.cveEmpresa == cveEmpresa
+                        where tblempresas.cveEmpresa == cveEmpresa && tblempresas.activo == "S"
                         select tblempresas;
             return query.ToList();
         }
 
-        public static List<tblfavorito> GetFavorito()
+        public static List<tbloferta> GetFavorito()
         {
+            favoritosClass favorit = new favoritosClass();
             dataContext.Configuration.LazyLoadingEnabled = false;
-            var query = from tblfavoritos in dataContext.tblfavoritos
-                        select tblfavoritos;
+            var query = from tbloferta in dataContext.tblofertas
+                        join tblfavoritos in dataContext.tblfavoritos on tbloferta.idOferta equals tblfavoritos.idOferta
+                        join tblsubcategoria in dataContext.tblsubcategorias on tbloferta.cveSubcategoria equals tblsubcategoria.cveSubcategoria
+                        where tbloferta.activo=="S" && tblfavoritos.activo=="S"
+                        select tblfavoritos.tbloferta as tbloferta;
+            query.Where(a => a.activo == "S");
+            favorit.oferta = query.ToList();
             return query.ToList();
         }
 
-        public static List<tblfavorito> GetFavoritoById(int idFavorito)
+        public static List<tbloferta> GetFavoritoById(int idUsuarioExterno)
         {
+            favoritosClass favorit = new favoritosClass();
             dataContext.Configuration.LazyLoadingEnabled = false;
-            var query = from tblfavoritos in dataContext.tblfavoritos
-                        where tblfavoritos.idFavorito == idFavorito
-                        select tblfavoritos;
+            var query = from tbloferta in dataContext.tblofertas join tblfavoritos in dataContext.tblfavoritos on  tbloferta.idOferta equals tblfavoritos.idOferta 
+                        where tblfavoritos.idUsuarioExterno == idUsuarioExterno && tblfavoritos.activo == "S" && tbloferta.fechaFinOferta >= DateTime.Today && tbloferta.activo == "S"
+                        select tbloferta ;
+
+            favorit.oferta = query.ToList();
             return query.ToList();
         }
+
+        public static List<tbloferta> GetSugerenciasById(int idUsuarioExterno)
+        {
+            favoritosClass favorit = new favoritosClass();
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblsubcategoriasusuario in dataContext.tblsubcategoriasusuarios
+                        join tblsubcategoria in dataContext.tblsubcategorias on tblsubcategoriasusuario.cveSubcategoria equals tblsubcategoria.cveSubcategoria
+                        join tbloferta in dataContext.tblofertas on tblsubcategoria.cveSubcategoria equals tbloferta.cveSubcategoria
+                        where tblsubcategoriasusuario.idUsuarioExterno == idUsuarioExterno && tbloferta.activo == "S" && tbloferta.fechaFinOferta >= DateTime.Today && tblsubcategoria.activo == "S" && tblsubcategoriasusuario.activo=="S"
+                        select tbloferta;
+
+            favorit.oferta = query.ToList();
+            return query.ToList();
+        }
+
+
+        //select * from tblsubcategoriasusuarios subc join tblsubcategorias sub on (subc.cveSubcategoria=sub.cveSubcategoria) join tblofertas ofe on (ofe.cveSubcategoria=sub.cveSubcategoria);
+
 
     }
 }
