@@ -29,37 +29,37 @@ namespace TalentoAUQService.Models
             }
             var query = (from tbloferta in dataContext.tblofertas
                          select tbloferta);
-            query.Where(a => a.activo == "S");
+            query= query.Where(a => a.activo  == "S");
             if (fechaInicioOferta != "0")
             {
-                query.Where(a => a.fechaInicioOferta >= inicio);
+                query = query.Where(a => a.fechaInicioOferta >= inicio);
             }
             if (titulo != "0") {
-                query.Where(a => a.titulo .Contains(titulo));
+                query = query.Where(a => a.titulo.Contains(titulo));
             }
             if (sueldoInicio != "0")
             {
-                query.Where(a => a.sueldoInicio >= Int32.Parse(sueldoInicio));
+                query = query.Where(a => a.sueldoInicio >= Int32.Parse(sueldoInicio));
             }
             if (sueldoFin != "0")
             {
-                query.Where(a => a.sueldoFin <= Int32.Parse(sueldoFin));
+                query = query.Where(a => a.sueldoFin <= Int32.Parse(sueldoFin));
             }
             if (cveEmpresa != "0")
             {
-                query.Where(a => a.cveEmpresa >= Int32.Parse(cveEmpresa));
+                query = query.Where(a => a.cveEmpresa == Int32.Parse(cveEmpresa));
             }
             if (cveTipoEmpleo != "0")
             {
-                query.Where(a => a.cveTipoEmpleo >= Int32.Parse(cveTipoEmpleo));
+                query = query.Where(a => a.cveTipoEmpleo == Int32.Parse(cveTipoEmpleo));
             }
             if (cveSubcategoria != "0")
             {
-                query.Where(a => a.cveSubcategoria >= Int32.Parse(cveSubcategoria));
+                query = query.Where(a => a.cveSubcategoria == Int32.Parse(cveSubcategoria));
             }
             if (cveMunicipio != "0")
             {
-                query.Where(a => a.cveMunicipio >= Int32.Parse(cveMunicipio));
+                query = query.Where(a => a.cveMunicipio == Int32.Parse(cveMunicipio));
             }
             return query.ToList();
         }
