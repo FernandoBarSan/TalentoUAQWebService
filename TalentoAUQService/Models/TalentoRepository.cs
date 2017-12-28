@@ -157,9 +157,33 @@ namespace TalentoAUQService.Models
             return query.ToList();
         }
 
+        public static DatosGenerales GetDatosGeneralesById(int idUsuarioExterno)
+        {
+            DatosGenerales DatosG = new DatosGenerales();
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblaspirante in dataContext.tblaspirantes
+                        where tblaspirante.idUsuarioExterno == idUsuarioExterno && tblaspirante.activo == "S" 
+                        select tblaspirante;
+
+            DatosG.aspirante = query.ToList();
+            foreach (tblaspirante aspirante in DatosG.aspirante) {
+                var query2 = from tblexperiencia in dataContext.tblexperiencias
+                            where tblexperiencia.idAspirante == aspirante.idAspirante.ToString() && tblexperiencia.activo == "S"
+                            select tblexperiencia;
+                DatosG.experiencias = query2.ToList();
+                var query3 = from tblescolaridade in dataContext.tblescolaridades
+                             where tblescolaridade.idAspirante == aspirante.idAspirante && tblescolaridade.activo == "S"
+                             select tblescolaridade;
+                DatosG.escoladirades = query3.ToList();
+                var query4 = from tblidioma in dataContext.tblidiomas
+                             where tblidioma.idAspirante == aspirante.idAspirante && tblidioma.activo == "S"
+                             select tblidioma;
+                DatosG.idiomas = query4.ToList();
+            }
+            return DatosG;
+        }
+
 
         //select * from tblsubcategoriasusuarios subc join tblsubcategorias sub on (subc.cveSubcategoria=sub.cveSubcategoria) join tblofertas ofe on (ofe.cveSubcategoria=sub.cveSubcategoria);
-
-
     }
 }
