@@ -15,7 +15,7 @@ namespace TalentoUAQWebService.Controllers
         public class CategoriasController : ApiController
         {
             // GET: api/Estados
-            [Route("api/tblestados")]
+            [Route("api/tblestadosFake")]
             public HttpResponseMessage Get()
             {
                 var tblestados = EstadosRepository.GetAllEstados();
@@ -25,7 +25,7 @@ namespace TalentoUAQWebService.Controllers
             }
 
             // GET: api/Estados/5
-            [Route("api/tblestatos/{id?}")]
+            [Route("api/tblestatosFake/{id?}")]
             public HttpResponseMessage Get(int id)
             {
                 var tblestados = EstadosRepository.GetEstado(id);
@@ -33,7 +33,7 @@ namespace TalentoUAQWebService.Controllers
                 return response;
             }
 
-            [Route("api/tblestados/{name:alpha}")]
+            [Route("api/tblestadosFake/{name:alpha}")]
             public HttpResponseMessage Get(string name)
             {
                 var tblestados = EstadosRepository.SearchEstadosByName(name);

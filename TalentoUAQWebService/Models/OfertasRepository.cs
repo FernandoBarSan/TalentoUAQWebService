@@ -29,13 +29,13 @@ namespace TalentoUAQWebService.Models
             }
             var query = (from tbloferta in dataContext.tblofertas
                          select tbloferta);
-            query = query.Where(a => a.activo == "S");
+            query= query.Where(a => a.activo  == "S");
             if (fechaInicioOferta != "0")
             {
                 query = query.Where(a => a.fechaInicioOferta >= inicio);
             }
             if (titulo != "0") {
-                query = query.Where(a => a.titulo .Contains(titulo));
+                query = query.Where(a => a.titulo.Contains(titulo));
             }
             if (sueldoInicio != "0")
             {
