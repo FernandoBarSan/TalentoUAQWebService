@@ -47,19 +47,19 @@ namespace TalentoUAQWebService.Models
             }
             if (cveEmpresa != "0")
             {
-                query = query.Where(a => a.cveEmpresa >= Int32.Parse(cveEmpresa));
+                query = query.Where(a => a.cveEmpresa == Int32.Parse(cveEmpresa));
             }
             if (cveTipoEmpleo != "0")
             {
-                query = query.Where(a => a.cveTipoEmpleo >= Int32.Parse(cveTipoEmpleo));
+                query = query.Where(a => a.cveTipoEmpleo == Int32.Parse(cveTipoEmpleo));
             }
             if (cveSubcategoria != "0")
             {
-                query = query.Where(a => a.cveSubcategoria >= Int32.Parse(cveSubcategoria));
+                query = query.Where(a => a.cveSubcategoria == Int32.Parse(cveSubcategoria));
             }
             if (cveMunicipio != "0")
             {
-                query = query.Where(a => a.cveMunicipio >= Int32.Parse(cveMunicipio));
+                query = query.Where(a => a.cveMunicipio == Int32.Parse(cveMunicipio));
             }
             return query.ToList();
         }
