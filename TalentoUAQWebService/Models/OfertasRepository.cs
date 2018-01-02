@@ -102,7 +102,7 @@ namespace TalentoUAQWebService.Models
                     cveEmpresa = element.cveEmpresa.ToString(),
                     nombreEmpresa = element.tblempresa.nombre.ToString(),
                     nombreContacto = element.nombreContacto.ToString(),
-                    correoContacto = element.nombreContacto.ToString(),
+                    correoContacto = element.correoContacto.ToString(),
                     telefonoContacto = element.telefonoContacto.ToString(),
                     cveTipoEmpleo = element.cveTipoEmpleo.ToString(),
                     descTipoEmpleo = element.tbltiposempleo.descTipoEmpleo.ToString(),
