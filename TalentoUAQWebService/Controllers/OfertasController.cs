@@ -39,15 +39,15 @@ namespace TalentoUAQWebService.Controllers
             return response;
         }
         // GET: api/tblofertasbusqueda/titulo/0/sueldoInicio/0/sueldoFin/0/fechaInicioOferta/0/fechaFinOferta/0/cveEmpresa/0/cveTipoEmpleo/0/cveSubcategoria/0/cveMunicipio/0/
-        [Route("api/tblofertasbusqueda/titulo/{titulo:regex([a-zA-Z_0-9]*)}/sueldoInicio/{sueldoInicio?}/sueldoFin/{sueldoFin?}/fechaInicioOferta/{fechaInicioOferta?}/fechaFinOferta/{fechaFinOferta?}/cveEmpresa/{cveEmpresa?}/cveTipoEmpleo/{cveTipoEmpleo?}/cveSubcategoria/{cveSubcategoria?}/cveMunicipio/{cveMunicipio?}/")]
+        [Route("api/tblofertasbusqueda/titulo/{titulo:regex([a-zA-Z_0-9]*)}/sueldoInicio/{sueldoInicio?}/sueldoFin/{sueldoFin?}/fechaInicioOferta/{fechaInicioOferta?}/fechaFinOferta/{fechaFinOferta?}/cveEmpresa/{cveEmpresa?}/cveTipoEmpleo/{cveTipoEmpleo?}/cveSubcategoria/{cveSubcategoria?}/cveCategoria/{cveCategoria?}/cveMunicipio/{cveMunicipio?}/cveEstado/{cveEstado?}/")]
         public HttpResponseMessage Get(string titulo, 
             string sueldoInicio, string sueldoFin, string fechaInicioOferta,
             string fechaFinOferta, string cveEmpresa, string cveTipoEmpleo, 
-            string cveSubcategoria, string cveMunicipio)
+            string cveSubcategoria, string cveCategoria, string cveMunicipio, string cveEstado)
         {            
             var tblofertas = OfertasRepository.BusquedaOfertas(titulo, sueldoInicio,
                 sueldoFin, fechaInicioOferta, fechaFinOferta, cveEmpresa, cveTipoEmpleo,
-                cveSubcategoria, cveMunicipio);
+                cveSubcategoria, cveCategoria, cveMunicipio, cveEstado);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tblofertas);
             return response;
         }
