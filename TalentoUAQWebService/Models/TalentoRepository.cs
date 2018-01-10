@@ -273,6 +273,46 @@ namespace TalentoUAQWebService.Models
             return query.ToList();
         }
 
+        public static List<tblidioma> GetIdiomas() {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblidioma in dataContext.tblidiomas where tblidioma.activo == "S" select tblidioma;
+            return query.ToList();
+        }
+
+        public static List<tblidioma> GetIdiomaById(int idIdioma)
+        {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblidioma in dataContext.tblidiomas where tblidioma.activo == "S" && tblidioma.idIdioma == idIdioma select tblidioma;
+            return query.ToList();
+        }
+
+        public static List<tblexperiencia> GetExperiencias()
+        {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblexperiencia in dataContext.tblexperiencias where tblexperiencia.activo == "S" select tblexperiencia;
+            return query.ToList();
+        }
+
+        public static List<tblexperiencia> GetExperienciaById(int idExperiencia)
+        {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblexperiencia in dataContext.tblexperiencias where tblexperiencia.activo == "S" && tblexperiencia.idExperiencia == idExperiencia select tblexperiencia;
+            return query.ToList();
+        }
+        public static List<tblescolaridade> GetEscolaridad()
+        {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblescolaridade in dataContext.tblescolaridades where tblescolaridade.activo == "S" select tblescolaridade;
+            return query.ToList();
+        }
+
+        public static List<tblescolaridade> GetEscolaridadById(int idEscolaridad)
+        {
+            dataContext.Configuration.LazyLoadingEnabled = false;
+            var query = from tblescolaridade in dataContext.tblescolaridades where tblescolaridade.activo == "S" && tblescolaridade.idEscolaridad == idEscolaridad select tblescolaridade;
+            return query.ToList();
+        }
+
 
         //select * from tblsubcategoriasusuarios subc join tblsubcategorias sub on (subc.cveSubcategoria=sub.cveSubcategoria) join tblofertas ofe on (ofe.cveSubcategoria=sub.cveSubcategoria);
     }

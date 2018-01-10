@@ -196,8 +196,11 @@
     <Compile Include="Controllers\OfertasController.cs" />
     <Compile Include="Controllers\SugerenciasController.cs" />
     <Compile Include="Controllers\tblcategoriasController.cs" />
+    <Compile Include="Controllers\tblEscolaridadesController.cs" />
     <Compile Include="Controllers\tblestadosController.cs" />
+    <Compile Include="Controllers\tblExperienciasController.cs" />
     <Compile Include="Controllers\tblfavoritosController.cs" />
+    <Compile Include="Controllers\tblIdiomasController.cs" />
     <Compile Include="Controllers\tblmunicipiosController.cs" />
     <Compile Include="Controllers\tblsubcategoriasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
