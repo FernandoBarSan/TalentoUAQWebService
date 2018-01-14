@@ -190,9 +190,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AspirantesController.cs" />
     <Compile Include="Controllers\DatosGeneralesController.cs" />
+    <Compile Include="Controllers\EscolaridadesController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
+    <Compile Include="Controllers\ExperienciasController.cs" />
+    <Compile Include="Controllers\FavoritosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdiomasController.cs" />
     <Compile Include="Controllers\OfertasController.cs" />
     <Compile Include="Controllers\SugerenciasController.cs" />
     <Compile Include="Controllers\tblcategoriasController.cs" />
@@ -207,9 +212,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspiranteRepository.cs" />
     <Compile Include="Models\DatosGenerales.cs" />
+    <Compile Include="Models\EscolaridadesRepository.cs" />
     <Compile Include="Models\EstadosRepository.cs" />
+    <Compile Include="Models\ExperienciasRepository.cs" />
     <Compile Include="Models\favoritosClass.cs" />
+    <Compile Include="Models\FavoritosRepository.cs" />
+    <Compile Include="Models\IdiomasRepository.cs" />
     <Compile Include="Models\OfertasRepository.cs" />
     <Compile Include="Models\TalentoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
