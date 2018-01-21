@@ -18,7 +18,7 @@ namespace TalentoUAQWebService.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody]tblidioma value)
         {
-            var tblidioma = IdiomasRepository.guardarIdioma(value);
+            var tblidioma = IdiomasRepository.GuardarIdioma(value);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tblidioma);
             return response;
         }

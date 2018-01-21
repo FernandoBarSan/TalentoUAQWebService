@@ -20,6 +20,7 @@ namespace TalentoUAQWebService
         public string activo { get; set; }
         public Nullable<System.DateTime> fechaRegistro { get; set; }
         public Nullable<System.DateTime> fechaActualizacion { get; set; }
+        public Nullable<int> porcentaje { get; set; }
     
         public virtual tblaspirante tblaspirante { get; set; }
     }

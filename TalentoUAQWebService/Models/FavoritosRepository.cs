@@ -10,7 +10,7 @@ namespace TalentoUAQWebService.Models
     {
         private static TalentoUAQEntities dataContext = new TalentoUAQEntities();
 
-        public static tblfavorito guardarFavorito(tblfavorito data)
+        public static tblfavorito GuardarFavorito(tblfavorito data)
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
             tblfavorito respuesta;

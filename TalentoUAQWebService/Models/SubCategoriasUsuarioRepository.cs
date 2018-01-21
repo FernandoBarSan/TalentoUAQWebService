@@ -6,37 +6,34 @@ using System.Web;
 
 namespace TalentoUAQWebService.Models
 {
-    public class IdiomasRepository
+    public class SubCategoriasUsuarioRepository
     {
         private static TalentoUAQEntities dataContext = new TalentoUAQEntities();
 
-        public static tblidioma GuardarIdioma(tblidioma data)
+        public static tblsubcategoriasusuario GuardarSubCategoriaUsuario(tblsubcategoriasusuario data)
         {
             dataContext.Configuration.LazyLoadingEnabled = false;
-            tblidioma respuesta;
-            if (data.idIdioma == 0)
+            tblsubcategoriasusuario respuesta;
+            if (data.idSubcategoriaUsuario == 0)
             {
-                tblidioma idioma = new tblidioma
+                tblsubcategoriasusuario subcategoriausuario = new tblsubcategoriasusuario
                 {
-                    idAspirante = data.idAspirante,
-                    idioma = data.idioma,
-                    porcentaje = data.porcentaje,
+                    cveSubcategoria = data.cveSubcategoria,
+                    idUsuarioExterno = data.idUsuarioExterno,                    
                     activo = "S",
                     fechaRegistro = DateTime.Now,
                     fechaActualizacion = DateTime.Now
                 };
-                respuesta = dataContext.tblidiomas.Add(idioma);
+                respuesta = dataContext.tblsubcategoriasusuarios.Add(subcategoriausuario);
                 dataContext.SaveChanges();
             }
             else
             {
-                var query = (from tblidioma in dataContext.tblidiomas
-                             select tblidioma);
-                query = query.Where(a => a.idIdioma == data.idIdioma);
+                var query = (from tblsubcategoriasusuario in dataContext.tblsubcategoriasusuarios
+                             select tblsubcategoriasusuario);
+                query = query.Where(a => a.idSubcategoriaUsuario == data.idSubcategoriaUsuario);
                 var fav = query.First();
                 fav.activo = data.activo;
-                fav.idioma = data.idioma;
-                fav.porcentaje = data.porcentaje;
                 fav.fechaActualizacion = DateTime.Now;
                 respuesta = fav;
                 dataContext.SaveChanges();

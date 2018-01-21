@@ -17,7 +17,7 @@ namespace TalentoUAQWebService.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody]tblfavorito value)
         {
-            var tblfavorito = FavoritosRepository.guardarFavorito(value);
+            var tblfavorito = FavoritosRepository.GuardarFavorito(value);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tblfavorito);
             return response;
         }
